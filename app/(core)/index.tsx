@@ -5,14 +5,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { myBooks } from "@/data/dummy";
 import { COLORS, FONTS, SIZES } from "@/constants";
 
-import BookCard from "@/components/book/BookCard";
 import HomeHeader from "@/components/home/header";
+import BookCard from "@/components/book/book-card";
 import HomeShortCuts from "@/components/home/shortcuts";
+import BorrowedBookCard from "@/components/book/borrowed-card";
 import FocusedStatusBar from "@/components/focused-statusbar";
 
 function Home() {
@@ -24,30 +26,43 @@ function Home() {
         barStyle="light-content"
       />
 
-      <HomeHeader name="Enola Holmes" point={221} />
-      <HomeShortCuts />
+      <FlatList
+        data={myBooks}
+        renderItem={({ item }) => <BookCard item={item} />}
+        keyExtractor={(item) => `category-${item.id}`}
+        contentContainerStyle={{
+          paddingHorizontal: SIZES.body2,
+          gap: SIZES.font,
+        }}
+        ListHeaderComponent={() => (
+          <React.Fragment>
+            <HomeHeader name="Enola Holmes" point={221} />
+            <HomeShortCuts />
 
-      <View style={styles.sectionContainer}>
-        <View style={styles.headerContainer}>
-          <Text style={styles.title}>My Books</Text>
-          <TouchableOpacity onPress={() => console.log("See More")}>
-            <Text style={styles.seeMoreText}>See more</Text>
-          </TouchableOpacity>
-        </View>
+            <View style={styles.sectionContainer}>
+              <View style={styles.headerContainer}>
+                <Text style={styles.title}>My Books</Text>
+                <TouchableOpacity onPress={() => console.log("See More")}>
+                  <Text style={styles.seeMoreText}>See more</Text>
+                </TouchableOpacity>
+              </View>
 
-        <View style={styles.booksContainer}>
-          <FlatList
-            horizontal
-            data={myBooks}
-            renderItem={({ item }) => <BookCard item={item} />}
-            keyExtractor={(item) => item.id}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              gap: SIZES.h2,
-            }}
-          />
-        </View>
-      </View>
+              <View style={styles.booksContainer}>
+                <FlatList
+                  horizontal
+                  data={myBooks}
+                  renderItem={({ item }) => <BorrowedBookCard item={item} />}
+                  keyExtractor={(item) => item.id}
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{
+                    gap: SIZES.h2,
+                  }}
+                />
+              </View>
+            </View>
+          </React.Fragment>
+        )}
+      />
     </SafeAreaView>
   );
 }
@@ -56,11 +71,10 @@ export default Home;
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    flex: 1,
-    marginTop: SIZES.font,
+    marginTop: SIZES.body1,
+    marginBottom: SIZES.body2,
   },
   headerContainer: {
-    paddingHorizontal: SIZES.font,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -76,6 +90,5 @@ const styles = StyleSheet.create({
   },
   booksContainer: {
     marginTop: SIZES.body3,
-    paddingHorizontal: SIZES.font,
   },
 });

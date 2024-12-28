@@ -14,7 +14,7 @@ interface Props {
   };
 }
 
-function BookCard({ item }: Props) {
+function BorrowedBookCard({ item }: Props) {
   const daysLeft = dayjs(item.dueDate).diff(dayjs(item.borrowDate), "day");
 
   return (
@@ -43,7 +43,7 @@ function BookCard({ item }: Props) {
   );
 }
 
-export default BookCard;
+export default BorrowedBookCard;
 
 const styles = StyleSheet.create({
   bookCover: {

@@ -41,8 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: COLORS.secondary,
     borderRadius: SIZES.radius * 1.25,
-    margin: SIZES.font,
-    padding: SIZES.base,
+    paddingVertical: SIZES.base,
     paddingHorizontal: SIZES.font,
   },
   shortcutContainer: {
