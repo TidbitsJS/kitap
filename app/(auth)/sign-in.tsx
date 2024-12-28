@@ -31,10 +31,6 @@ function SignIn() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState<Error>({
-    status: false,
-    errorMessage: "Something went wrong. Please try again.",
-  });
 
   const handleInputText = (type: InputType, value: string) => {
     setCredential({
@@ -45,15 +41,11 @@ function SignIn() {
 
   const handleSubmit = () => {};
 
-  const handleErrorClose = () => {
-    setError({ status: false, errorMessage: "" });
-  };
-
   return (
     <SafeAreaView style={styles.safeArea}>
       <FocusedStatusBar animated={true} backgroundColor={COLORS.primary} />
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {/* Header Section */}
           <View style={styles.header}>
@@ -65,7 +57,7 @@ function SignIn() {
                   style={styles.icon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => router.push("/sign-up")}>
                 <Text style={styles.registerText}>Register</Text>
               </TouchableOpacity>
             </View>

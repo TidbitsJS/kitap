@@ -21,7 +21,10 @@ function Welcome() {
         barStyle="light-content"
       />
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.mainContent}>
           <View style={styles.header}>
             <Image

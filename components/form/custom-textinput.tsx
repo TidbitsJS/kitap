@@ -5,9 +5,9 @@ import { COLORS, FONTS, SHADOW, SIZES } from "@/constants";
 export type InputType =
   | "email"
   | "text"
-  | "username"
+  | "fullName"
   | "password"
-  | "confirmPassword";
+  | "universityId";
 
 interface Props {
   placeholderText: string;
@@ -27,6 +27,13 @@ const CustomTextInput = ({
       <TextInput
         value={value}
         style={styles.input}
+        keyboardType={
+          type === "email"
+            ? "email-address"
+            : type === "universityId"
+            ? "numeric"
+            : "default"
+        }
         placeholder={placeholderText}
         secureTextEntry={type === "password"}
         placeholderTextColor={COLORS.lightGray4}
