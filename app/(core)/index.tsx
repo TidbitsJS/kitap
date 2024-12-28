@@ -1,16 +1,21 @@
-import { Text, View } from "react-native";
+import { COLORS } from "@/constants";
+import HomeHeader from "@/components/home/header";
+import FocusedStatusBar from "@/components/focused-statusbar";
+import { SafeAreaView } from "react-native-safe-area-context";
+import HomeShortCuts from "@/components/home/shortcuts";
 
 function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Editss app/index.tsx to edit this screen.</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.black }}>
+      <FocusedStatusBar
+        animated={true}
+        backgroundColor={COLORS.black}
+        barStyle="light-content"
+      />
+
+      <HomeHeader name="Enola Holmes" point={221} />
+      <HomeShortCuts />
+    </SafeAreaView>
   );
 }
 
