@@ -8,12 +8,19 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/custom-button";
 import { COLORS, FONTS, images, SIZES } from "@/constants";
+import FocusedStatusBar from "@/components/focused-statusbar";
 
 function Welcome() {
   return (
     <SafeAreaView style={styles.container}>
+      <FocusedStatusBar
+        animated={true}
+        backgroundColor={COLORS.black}
+        barStyle="light-content"
+      />
+
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.mainContent}>
           <View style={styles.header}>
