@@ -64,7 +64,7 @@ const BookDetailsHeader = ({ book }: { book: Book }) => {
           paddingHorizontal: SIZES.body2,
           alignItems: "center",
           justifyContent: "space-between",
-          paddingTop: SIZES.padding,
+          paddingTop: SIZES.base,
         }}
       >
         <TouchableOpacity onPress={() => router.back()}>

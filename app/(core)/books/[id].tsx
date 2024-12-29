@@ -17,110 +17,113 @@ const BookDetails = () => {
   const luminance = getLuminance(book?.backgroundColor as string);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar
-        animated={true}
-        backgroundColor={`${book?.backgroundColor}e6`}
-        barStyle={luminance === "#FFFFFF" ? "light-content" : "dark-content"}
-      />
-
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          backgroundColor: COLORS.black,
-          paddingBottom: 100,
-        }}
+    <>
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: `${book?.backgroundColor}e6` }}
       >
-        <View
-          style={{
-            flex: 1,
+        <FocusedStatusBar
+          backgroundColor={`${book?.backgroundColor}e6`}
+          barStyle={luminance === "#FFFFFF" ? "light-content" : "dark-content"}
+        />
+
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
             backgroundColor: COLORS.black,
+            paddingBottom: 100,
           }}
         >
-          <BookDetailsHeader book={book as Book} />
-
           <View
             style={{
-              padding: SIZES.padding,
+              flex: 1,
+              backgroundColor: COLORS.black,
             }}
           >
-            <Text
+            <BookDetailsHeader book={book as Book} />
+
+            <View
               style={{
-                ...FONTS.h3,
-                color: COLORS.white,
-                marginBottom: SIZES.body2,
+                padding: SIZES.padding,
               }}
             >
-              Description
-            </Text>
-            <View style={{ gap: SIZES.padding }}>
-              {book?.description?.split("\n").map((line, index) => (
-                <Text
-                  key={index}
-                  style={{ ...FONTS.body4, color: COLORS.lightGray }}
-                >
-                  {line}
-                </Text>
-              ))}
+              <Text
+                style={{
+                  ...FONTS.h3,
+                  color: COLORS.white,
+                  marginBottom: SIZES.body2,
+                }}
+              >
+                Description
+              </Text>
+              <View style={{ gap: SIZES.padding }}>
+                {book?.description?.split("\n").map((line, index) => (
+                  <Text
+                    key={index}
+                    style={{ ...FONTS.body4, color: COLORS.lightGray }}
+                  >
+                    {line}
+                  </Text>
+                ))}
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
 
-      <View
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: COLORS.black,
-          padding: SIZES.padding / 1.25,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          borderTopWidth: 1,
-          borderColor: COLORS.secondary,
-          gap: SIZES.body1,
-        }}
-      >
-        <TouchableOpacity
+        <View
           style={{
-            width: 50,
-            backgroundColor: COLORS.secondary,
-            borderRadius: 25,
-            padding: SIZES.font,
-            alignItems: "center",
-            justifyContent: "center",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: COLORS.black,
+            padding: SIZES.padding / 1.25,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            borderTopWidth: 1,
+            borderColor: COLORS.secondary,
+            gap: SIZES.body1,
           }}
-          onPress={() => console.log("Bookmark")}
         >
-          <Image
-            source={icons.bookmark_icon}
-            resizeMode="contain"
+          <TouchableOpacity
             style={{
-              width: 18,
-              height: 18,
-              tintColor: COLORS.lightGray2,
+              width: 50,
+              backgroundColor: COLORS.secondary,
+              borderRadius: 25,
+              padding: SIZES.font,
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
-        </TouchableOpacity>
+            onPress={() => console.log("Bookmark")}
+          >
+            <Image
+              source={icons.bookmark_icon}
+              resizeMode="contain"
+              style={{
+                width: 18,
+                height: 18,
+                tintColor: COLORS.lightGray2,
+              }}
+            />
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{
-            flex: 1,
-            backgroundColor: COLORS.primary,
-            borderRadius: SIZES.radius,
-            paddingHorizontal: SIZES.font,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          onPress={() => console.log("Start Reading")}
-        >
-          <Text style={{ ...FONTS.h3, color: COLORS.white }}>
-            Start Reading
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              backgroundColor: COLORS.primary,
+              borderRadius: SIZES.radius,
+              paddingHorizontal: SIZES.font,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onPress={() => console.log("Start Reading")}
+          >
+            <Text style={{ ...FONTS.h3, color: COLORS.white }}>
+              Start Reading
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 
