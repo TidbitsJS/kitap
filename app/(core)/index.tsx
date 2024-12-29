@@ -32,7 +32,7 @@ function Home() {
         keyExtractor={(item) => `category-${item.id}`}
         contentContainerStyle={{
           paddingHorizontal: SIZES.body2,
-          gap: SIZES.font,
+          gap: SIZES.h2,
         }}
         ListHeaderComponent={() => (
           <React.Fragment>

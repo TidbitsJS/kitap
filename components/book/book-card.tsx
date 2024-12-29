@@ -1,215 +1,104 @@
 import { router } from "expo-router";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 
+import BookTag from "./tag";
 import { COLORS, FONTS, SIZES, icons } from "@/constants";
 
-interface Props {
-  item: {
-    id: string;
-    bookCover: any;
-    bookName: string;
-    author: string;
-    pageNo: number;
-    readed: string;
-    genre: string[];
-  };
-}
-
-function BookCard({ item }: Props) {
+function BookCard({ item }: { item: Book }) {
   return (
     <View>
       <TouchableOpacity
-        style={{ flex: 1, flexDirection: "row" }}
+        style={styles.cardContainer}
         onPress={() => router.push(`/books/${item.id}`)}
       >
         <TouchableOpacity onPress={() => router.push(`/books/${item.id}`)}>
           <Image
             source={item.bookCover}
             resizeMode="cover"
-            style={{ width: 100, height: 150, borderRadius: 10 }}
+            style={styles.bookImage}
           />
         </TouchableOpacity>
 
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "space-between",
-            marginLeft: SIZES.radius,
-          }}
-        >
+        <View style={styles.cardContent}>
           <TouchableOpacity onPress={() => router.push(`/books/${item.id}`)}>
-            <Text
-              style={{
-                paddingRight: SIZES.padding * 2,
-                ...FONTS.h3,
-                color: COLORS.white,
-              }}
-              numberOfLines={2}
-            >
+            <Text style={styles.bookName} numberOfLines={2}>
               {item.bookName}
             </Text>
-
-            <Text style={{ ...FONTS.h4, color: COLORS.lightGray }}>
-              {item.author}
-            </Text>
+            <Text style={styles.bookAuthor}>{item.author}</Text>
           </TouchableOpacity>
 
           <View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: SIZES.radius,
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginRight: SIZES.font,
-                }}
-              >
+            <View style={styles.infoRow}>
+              <View style={styles.infoItem}>
                 <Image
                   source={icons.page_filled_icon}
                   resizeMode="contain"
-                  style={{
-                    width: 15,
-                    height: 15,
-                    tintColor: COLORS.lightGray,
-                    marginRight: SIZES.base,
-                  }}
+                  style={styles.infoIcon}
                 />
-                <Text
-                  style={{
-                    ...FONTS.body5,
-                    color: COLORS.lightGray,
-                  }}
-                >
-                  {item.pageNo}
-                </Text>
+                <Text style={styles.infoText}>{item.availableCopies}</Text>
               </View>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
+              <View style={styles.infoItem}>
                 <Image
                   source={icons.read_icon}
                   resizeMode="contain"
-                  style={{
-                    width: 15,
-                    height: 15,
-                    tintColor: COLORS.lightGray,
-                    marginRight: SIZES.base,
-                  }}
+                  style={styles.infoIcon}
                 />
-                <Text
-                  style={{
-                    ...FONTS.body5,
-                    color: COLORS.lightGray,
-                  }}
-                >
-                  {item.readed}
-                </Text>
+                <Text style={styles.infoText}>{item.borrows}</Text>
               </View>
             </View>
 
-            {/* <View
-              style={{
-                flexDirection: "row",
-                marginTop: SIZES.base,
-                justifyContent: "flex-start",
-                flexWrap: "wrap",
-                alignItems: "center",
-              }}
-            >
-              <HomeBookTag
-                tagName={item.genre[0]}
-                tagBgColor={COLORS.darkGreen}
-                tagColor={COLORS.lightGreen}
-              />
+            <View style={styles.genreRow}>
+              {item.genre[0] && (
+                <BookTag
+                  tagName={item.genre[0]}
+                  tagColor={COLORS.lightGreen}
+                  tagBgColor={COLORS.darkGreen}
+                />
+              )}
               {item.genre[1] && (
-                <HomeBookTag
+                <BookTag
                   tagName={item.genre[1]}
-                  tagBgColor={COLORS.darkRed}
-                  tagColor={COLORS.lightRed}
+                  tagColor={COLORS.lightBlue}
+                  tagBgColor={COLORS.darkBlue}
                 />
               )}
               {item.genre[2] && (
-                <HomeBookTag
+                <BookTag
                   tagName={item.genre[2]}
-                  tagBgColor={COLORS.darkBlue}
-                  tagColor={COLORS.lightBlue}
+                  tagColor={COLORS.lightRed}
+                  tagBgColor={COLORS.darkRed}
                 />
               )}
-            </View> */}
+            </View>
           </View>
         </View>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={{ position: "absolute", top: 5, right: 5 }}
+        style={styles.bookmarkButton}
         onPress={() => console.log("Bookmark")}
       >
         <Image
           source={icons.bookmark_icon}
           resizeMode="contain"
-          style={{
-            width: 25,
-            height: 25,
-            tintColor: COLORS.lightGray,
-          }}
+          style={styles.bookmarkIcon}
         />
       </TouchableOpacity>
     </View>
   );
 }
 
-// Helper functions to determine tag colors based on genre
-const getGenreBgColor = (genre: string) => {
-  switch (genre) {
-    case "Fiction":
-      return COLORS.darkGreen;
-    case "Non-Fiction":
-      return COLORS.darkRed;
-    case "Science":
-      return COLORS.darkBlue;
-    default:
-      return COLORS.gray;
-  }
-};
-
-const getGenreTextColor = (genre: string) => {
-  switch (genre) {
-    case "Fiction":
-      return COLORS.lightGreen;
-    case "Non-Fiction":
-      return COLORS.lightRed;
-    case "Science":
-      return COLORS.lightBlue;
-    default:
-      return COLORS.white;
-  }
-};
-
-export default BookCard;
-
 const styles = StyleSheet.create({
   cardContainer: {
-    marginVertical: SIZES.base,
-  },
-  imageContainer: {
     flex: 1,
     flexDirection: "row",
   },
-  bookCover: {
+  bookImage: {
     width: 100,
     height: 150,
     borderRadius: 10,
   },
-  detailsContainer: {
+  cardContent: {
     flex: 1,
     justifyContent: "space-between",
     marginLeft: SIZES.radius,
@@ -219,11 +108,11 @@ const styles = StyleSheet.create({
     ...FONTS.h3,
     color: COLORS.white,
   },
-  author: {
+  bookAuthor: {
     ...FONTS.h4,
     color: COLORS.lightGray,
   },
-  infoContainer: {
+  infoRow: {
     flexDirection: "row",
     alignItems: "center",
     marginTop: SIZES.radius,
@@ -233,35 +122,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginRight: SIZES.font,
   },
-  icon: {
+  infoIcon: {
     width: 15,
     height: 15,
     tintColor: COLORS.lightGray,
     marginRight: SIZES.base,
   },
-  pageNo: {
+  infoText: {
     ...FONTS.body5,
     color: COLORS.lightGray,
   },
-  readed: {
-    ...FONTS.body5,
-    color: COLORS.lightGray,
-  },
-  genreContainer: {
+  genreRow: {
     flexDirection: "row",
     marginTop: SIZES.base,
     justifyContent: "flex-start",
     flexWrap: "wrap",
     alignItems: "center",
+    gap: SIZES.base,
   },
   bookmarkButton: {
     position: "absolute",
-    top: 5,
-    right: 5,
+    top: 7,
+    right: 0,
   },
   bookmarkIcon: {
-    width: 25,
-    height: 25,
+    width: 20,
+    height: 20,
     tintColor: COLORS.lightGray,
   },
 });
+
+export default BookCard;
