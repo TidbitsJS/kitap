@@ -14,7 +14,7 @@ export const bookAtomicHabits = {
   availableCopies: "1.1M",
   description:
     "World-renowned habits expert James Clear has discovered a simpler system for transforming your life. He knows that lasting change comes from the compound effect of hundreds of small decisions – doing two push-ups a day, waking up five minutes early, or holding a single short phone call. He calls them atomic habits. \n In this ground-breaking book, Clear reveals how these tiny changes will help you get 1 percent better every day. He uncovers a handful of simple life hacks (the forgotten art of Habit Stacking, the unexpected power of the Two Minute Rule, or the trick to entering the Goldilocks Zone) and delves into cutting-edge psychology and neuroscience to explain why they matter. Along the way, he tells inspiring stories of Olympic gold medalists, leading CEOs and distinguished scientists who have used the science of small habits to stay productive, motivated and happy.",
-  backgroundColor: "#fffdf6",
+  backgroundColor: "#ffffff",
 };
 
 export const bookCrackingTheCodingInterview = {
@@ -31,7 +31,7 @@ export const bookCrackingTheCodingInterview = {
   availableCopies: "1.4M",
   description:
     "Cracking the Coding Interview is the ultimate guide for anyone preparing for a software engineering interview. Gayle Laakmann McDowell, a former software engineer at Google and Microsoft, shares insider tips and strategies to help you succeed. This comprehensive book covers over 150 programming questions with solutions, tips on system design, and advice on how to tackle behavioral questions. It also delves into the best approaches for technical interviews at top tech companies like Google, Amazon, and Microsoft, making it an essential resource for aspiring engineers.",
-  backgroundColor: "#f5f5f5",
+  backgroundColor: "#97cc02",
 };
 
 export const bookEloquentJavaScript = {
@@ -48,7 +48,7 @@ export const bookEloquentJavaScript = {
   availableCopies: "1.2M",
   description:
     "Eloquent JavaScript is a deep dive into the JavaScript programming language, designed for readers who already have some basic knowledge of programming. Written by Marijn Haverbeke, this book takes a hands-on approach to learning, teaching not only the syntax of JavaScript but also how to think like a programmer. With interactive examples and exercises, it covers core concepts like functions, higher-order functions, closures, and asynchronous programming, as well as advanced topics like the JavaScript engine and Node.js. This book is ideal for those looking to master JavaScript for web development and beyond.",
-  backgroundColor: "#f8f8f8",
+  backgroundColor: "#F8D347",
 };
 
 export const bookReactInAction = {
@@ -65,5 +65,5 @@ export const bookReactInAction = {
   availableCopies: "1M",
   description:
     "React in Action is a comprehensive guide for learning React, one of the most popular JavaScript libraries for building user interfaces. Written by Mark T. Thomas, this book covers both the fundamentals and advanced techniques of React development. It provides hands-on examples of building modern, dynamic applications using React’s component-based architecture. The book walks through creating stateful components, integrating APIs, managing application state with Redux, and deploying React applications. Whether you’re a beginner or an intermediate React developer, this book will help you take your skills to the next level.",
-  backgroundColor: "#ffffff",
+  backgroundColor: "#302428",
 };
