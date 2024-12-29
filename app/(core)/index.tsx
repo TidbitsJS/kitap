@@ -33,7 +33,7 @@ function Home() {
         contentContainerStyle={{
           paddingHorizontal: SIZES.body2,
           gap: SIZES.h2,
-          paddingBottom: SIZES.h1 * 2,
+          paddingBottom: SIZES.h1,
         }}
         ListHeaderComponent={() => (
           <React.Fragment>

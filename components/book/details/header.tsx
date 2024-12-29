@@ -156,7 +156,7 @@ const BookDetailsHeader = ({ book }: { book: Book }) => {
           flexDirection: "row",
           padding: SIZES.font,
           marginHorizontal: SIZES.body2,
-          marginTop: SIZES.body1 * 1.5,
+          marginTop: SIZES.body1 * 1.25,
           borderRadius: SIZES.radius,
           alignItems: "center",
           justifyContent: "space-between",
